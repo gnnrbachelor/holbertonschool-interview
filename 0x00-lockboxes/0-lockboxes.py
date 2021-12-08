@@ -7,7 +7,7 @@ def canUnlockAll(boxes):
     keychain = [0]
     for key in keychain:
         for j in boxes[key]:
-            if j not in keychain:
+            if j not in keychain and j < len(boxes):
                  keychain.append(j)
     for i in range(len(boxes)):
         if i not in keychain:
