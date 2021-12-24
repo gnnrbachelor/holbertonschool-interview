@@ -1,5 +1,11 @@
 #include "binary_trees.h"
 
+/**
+ * tree_height - Returns height of BT
+ * @root: Root
+ * Return: Height
+ */
+
 size_t tree_height(heap_t *root)
 {
 	if (!root)
@@ -7,6 +13,12 @@ size_t tree_height(heap_t *root)
 	return (1 + tree_height(root->left) + tree_height(root->right));
 }
 
+/**
+ * heapify - Heapify function
+ * @node: Node
+ * Return: Head
+ *
+ */
 
 heap_t *heapify(heap_t *node)
 {
@@ -19,6 +31,13 @@ heap_t *heapify(heap_t *node)
 	}
 	return (node);
 }
+
+/**
+ * heap_insert - Inserts in heap
+ * @root: Root
+ * @value: Value
+ * Return: Pointer to node
+ */
 
 heap_t *heap_insert(heap_t **root, int value)
 {
