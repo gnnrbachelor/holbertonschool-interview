@@ -2,6 +2,7 @@
 
 """ Minimum Operations """
 
+
 def minOperations(n):
     """
      min_opations
@@ -19,4 +20,3 @@ def minOperations(n):
             possible_op += 1
 
     return min_op
-
