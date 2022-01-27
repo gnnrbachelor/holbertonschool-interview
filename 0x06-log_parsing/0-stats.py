@@ -1,6 +1,9 @@
 #!/usr/bin/python3
+"""Log this parse"""
+
 
 import sys
+
 
 stat = {
     "200": 0,
@@ -15,6 +18,7 @@ stat = {
 size = 0
 
 if __name__ == '__main__':
+    """Progam to parse log"""
     count = 0
     for line in sys.stdin:
         try:
