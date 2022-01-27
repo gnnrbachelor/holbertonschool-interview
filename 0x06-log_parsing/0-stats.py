@@ -17,6 +17,14 @@ stat = {
 }
 size = 0
 
+def printer():
+    """Print function"""
+    print("File size: {}".format(size))
+    for status in sorted(stat.keys()):
+        if stat[status]:
+            print("{}: {}".format(status, stat[status]))
+    
+
 if __name__ == '__main__':
     """Progam to parse log"""
     count = 0
@@ -30,11 +38,10 @@ if __name__ == '__main__':
             except:
                 pass
             if count == 9:
-                print("File size: {}".format(size))
-                for status in sorted(stat.keys()):
-                    if stat[status]:
-                        print("{}: {}".format(status, stat[status]))
+                printer()
                 count = -1
             count += 1
     except KeyboardInterrupt:
+        printer()
         raise
+    printer()
