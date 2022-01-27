@@ -7,7 +7,7 @@ import sys
 
 def printer(stat, size):
     """Print function"""
-    print("File size: {}".format(size))
+    print("File size: {}".format(size[0]))
     for status in sorted(stat.keys()):
         if stat[status]:
             print("{}: {}".format(status, stat[status]))
@@ -15,7 +15,7 @@ def printer(stat, size):
 
 def log_parse(stat, args, size, count):
     """Progam to parse log"""
-    size += int(args[-1])
+    size[0] += int(args[-1])
     if args[-2] in stat:
         stat[args[-2]] += 1
     if count[0] == 9:
@@ -38,7 +38,7 @@ if __name__ == '__main__':
        "500": 0
     }
 
-    size = 0
+    size = [0]
     count = [0]
 
     while True:
