@@ -15,14 +15,17 @@ def printer(stat, size):
 
 def log_parse(stat, args, size, count):
     """Progam to parse log"""
-    size[0] += int(args[-1])
-    if args[-2] in stat and args[-2].isdigit():
-        stat[args[-2]] += 1
-    if count[0] == 9:
-        printer(stat, size)
-        count[0] = -1
-    else:
-        count[0] += 1
+    try:
+        size[0] += int(args[-1])
+        if args[-2] in stat and args[-2].isdigit():
+            stat[args[-2]] += 1
+        if count[0] == 9:
+            printer(stat, size)
+            count[0] = -1
+        else:
+            count[0] += 1
+    except Exception:
+        pass
 
 
 if __name__ == '__main__':
