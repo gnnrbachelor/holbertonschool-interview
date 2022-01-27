@@ -5,19 +5,7 @@
 import sys
 
 
-stat = {
-    "200": 0,
-    "301": 0,
-    "400": 0,
-    "401": 0,
-    "403": 0,
-    "404": 0,
-    "405": 0,
-     "500": 0
-    }
-
-
-def printer(size):
+def printer(stat, size):
     """Print function"""
     print("File size: {}".format(size))
     for status in sorted(stat.keys()):
@@ -25,30 +13,38 @@ def printer(size):
             print("{}: {}".format(status, stat[status]))
 
 
-def log_parse(size):
+def log_parse(stat, args, size, count):
     """Progam to parse log"""
-    count = 0
-    for line in sys.stdin:
-        try:
-            info_list = line.split()
-            size += int(info_list[-1])
-            if info_list[-2] in stat:
-                stat[info_list[-2]] += 1
-        except:
-            pass
-        if count == 9:
-            printer(size)
-            count = -1
-        count += 1
+    size += int(args[-1])
+    if args[-2] in stat:
+        stat[args[-2]] += 1
+    if count[0] == 9:
+        printer(stat, size)
+        count[0] = -1
+    else:
+        count[0] += 1
 
 
 if __name__ == '__main__':
     """Entry point"""
-    size = 0
-    try:
-        log_parse(size)
-    except KeyboardInterrupt:
-        log_parse(size)
-        raise
-    log_parse(size)
+    stat = {
+       "200": 0,
+       "301": 0,
+       "400": 0,
+       "401": 0,
+       "403": 0,
+       "404": 0,
+       "405": 0,
+       "500": 0
+    }
 
+    size = 0
+    count = [0]
+
+    while True:
+        try:
+            args = input().split()
+            log_parse(stat, args, size, count)
+        except (KeyboardInterrupt, EOFError):
+            printer(stat, size)
+            exit()
