@@ -20,18 +20,21 @@ size = 0
 if __name__ == '__main__':
     """Progam to parse log"""
     count = 0
-    for line in sys.stdin:
-        try:
-            info_list = line.split()
-            size += int(info_list[-1])
-            if info_list[-2] in stat:
-                stat[info_list[-2]] += 1
-        except:
-            pass
-        if count == 9:
-            print("File size: {}".format(size))
-            for status in sorted(stat.keys()):
-                if stat[status]:
-                    print("{}: {}".format(status, stat[status]))
-            count = -1
-        count += 1
+    try:
+        for line in sys.stdin:
+            try:
+                info_list = line.split()
+                size += int(info_list[-1])
+                if info_list[-2] in stat:
+                    stat[info_list[-2]] += 1
+            except:
+                pass
+            if count == 9:
+                print("File size: {}".format(size))
+                for status in sorted(stat.keys()):
+                    if stat[status]:
+                        print("{}: {}".format(status, stat[status]))
+                count = -1
+            count += 1
+    except KeyboardInterrupt:
+        raise
