@@ -25,10 +25,9 @@ def printer(size):
             print("{}: {}".format(status, stat[status]))
 
 
-def log_parse():
+def log_parse(size):
     """Progam to parse log"""
     count = 0
-    size = 0
     for line in sys.stdin:
         try:
             info_list = line.split()
@@ -45,10 +44,11 @@ def log_parse():
 
 if __name__ == '__main__':
     """Entry point"""
+    size = 0
     try:
-        log_parse()
+        log_parse(size)
     except KeyboardInterrupt:
-        log_parse()
+        log_parse(size)
         raise
-    log_parse()
+    log_parse(size)
 
