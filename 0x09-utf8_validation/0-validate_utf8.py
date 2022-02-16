@@ -10,5 +10,3 @@ def validUTF8(data):
     except (ValueError, UnicodeDecodeError):
         return False
     return True
-
-
