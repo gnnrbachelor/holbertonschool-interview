@@ -1,5 +1,3 @@
-
-
 #ifndef SLIDE_LINE_H
 #define SLIDE_LINE_H
 
@@ -13,8 +11,7 @@ int slide_line(int *line, size_t size, int direction);
 void swap(int *a, int *b);
 void left(int *line, size_t size);
 void right(int *line, size_t size);
-void merge_right(int *line, size_t size);
-void merge_left(int *line, size_t size);
+void merge(int *line, size_t size, int l_or_r);
 
 
 #endif

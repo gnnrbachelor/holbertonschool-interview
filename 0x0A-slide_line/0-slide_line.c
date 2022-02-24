@@ -15,6 +15,46 @@ void swap(int *a, int *b)
 	*b = temp;
 }
 
+/**
+ * merge - Merges
+ * @line: Line
+ * @size: Size
+ * Return: Void
+ */
+
+void merge(int *line, size_t size, int l_or_r)
+{
+	size_t i;
+
+	if (l_or_r)
+	{
+		for (i = 0; i < size; i++)
+		{
+			if (line[i] == line[i + 1])
+			{
+				line[i] = line[i] + line[i + 1];
+				line[i + 1] = 0;
+			}
+		}
+
+	}
+	else
+	{
+		for (i = size - 1; (int) i >= 0; i--)
+		{
+			if (line[i] == line[i - 1])
+			{
+				line[i] = line[i] + line[i - 1];
+				line[i - 1] = 0;
+			}
+		}
+	}
+}
+
+
+
+
+
 
 /**
  * left - Lefts
@@ -75,14 +115,14 @@ int slide_line(int *line, size_t size, int direction)
 	if (direction == SLIDE_LEFT)
 	{
 		left(line, size);
-		merge_left(line, size);
+		merge(line, size, 1);
 		left(line, size);
 		return (1);
 	}
 	else if (direction == SLIDE_RIGHT)
 	{
 		right(line, size);
-		merge_right(line, size);
+		merge(line, size, 0);
 		right(line, size);
 		return (1);
 	}
