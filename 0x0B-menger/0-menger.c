@@ -11,6 +11,13 @@ void menger(int level)
 	int row, col, empty, flag;
 	int size = pow(3, level);
 
+	if (level == 0)
+	{
+		putchar('#');
+		putchar('\n');
+		return;
+	}
+
 	for (row = 0; row < size; row++)
 	{
 		for (col = 0; col < size; col++)
