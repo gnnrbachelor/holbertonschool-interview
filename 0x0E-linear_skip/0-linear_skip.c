@@ -1,9 +1,10 @@
 #include "search.h"
 
 /**
- * linear_skip - search for value in skip list
+ * part_two - completes skip list search
  * @prev:  prev node
  * @cur: cur node
+ * @value: Value
  * Return: pointer to found node
  */
 static skiplist_t *part_two(skiplist_t *prev, skiplist_t *cur, int value)
