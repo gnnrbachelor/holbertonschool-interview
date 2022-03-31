@@ -1,11 +1,11 @@
 #include "search.h"
 
 /**
- * part_two - completes skip list search
- * @prev:  prev node
- * @cur: cur node
- * @value: Value
- * Return: pointer to found node
+ * check_slow - checks orig list
+ * @fast:  fast lane
+ * @list: list
+ * @value: Value * Return: pointer to found node
+ * Return: Found node
  */
 skiplist_t *check_slow(skiplist_t *fast, skiplist_t *list, int value)
 {
@@ -38,12 +38,12 @@ skiplist_t *linear_skip(skiplist_t *list, int value)
 
 	while (fast->express)
 	{
-		printf("Value checked at index [%lu] = [%d]\n", fast->express->index, fast->express->n);
-
+		printf("Value checked at index [%lu] = [%d]\n",
+			fast->express->index, fast->express->n);
 		if (fast->express->n >= value)
 		{
 			printf("Value found between indexes [%lu] and [%lu]\n",
-	       			fast->index, fast->express->index);
+				fast->index, fast->express->index);
 			break;
 		}
 		fast = fast->express;
