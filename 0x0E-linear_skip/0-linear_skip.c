@@ -7,7 +7,7 @@
  * @value: Value
  * Return: pointer to found node
  */
-static skiplist_t *part_two(skiplist_t *prev, skiplist_t *cur, int value)
+skiplist_t *part_two(skiplist_t *prev, skiplist_t *cur, int value)
 {
 	printf("Value found between indexes [%lu] and [%lu]\n",
 	       prev->index, cur->index);
