@@ -7,19 +7,18 @@
  * @value: Value
  * Return: pointer to found node
  */
-skiplist_t *part_two(skiplist_t *prev, skiplist_t *cur, int value)
+skiplist_t *check_slow(skiplist_t *fast, skiplist_t *list, int value)
 {
-	printf("Value found between indexes [%lu] and [%lu]\n",
-	       prev->index, cur->index);
-	while (prev && prev->index <= cur->index)
+	for (list = fast; list != fast->express; list = list->next)
 	{
-		printf("Value checked at index [%lu] = [%d]\n", prev->index, prev->n);
-		if (prev->n == value)
-			return (prev);
-
-		prev = prev->next;
+		printf("Value checked at index [%lu] = [%d]\n", list->index, list->n);
+		if (value == list->n)
+			break;
 	}
-	return (NULL);
+	if (list == fast->express)
+		return (NULL);
+	else
+		return (list);
 }
 
 /**
@@ -31,32 +30,35 @@ skiplist_t *part_two(skiplist_t *prev, skiplist_t *cur, int value)
 
 skiplist_t *linear_skip(skiplist_t *list, int value)
 {
-	skiplist_t *cur, *prev, *found;
+	skiplist_t *fast = list;
+	skiplist_t *found;
 
 	if (!list)
 		return (NULL);
 
-	cur = list->express;
-	prev = list;
-
-	while (cur)
+	while (fast->express)
 	{
-		printf("Value checked at index [%lu] = [%d]\n", cur->index, cur->n);
+		printf("Value checked at index [%lu] = [%d]\n", fast->express->index, fast->express->n);
 
-		if (cur->n >= value)
-			break;
-		prev = cur;
-		if (!cur->express)
+		if (fast->express->n >= value)
 		{
-			while (!cur->next)
-				cur = cur->next;
+			printf("Value found between indexes [%lu] and [%lu]\n",
+	       			fast->index, fast->express->index);
 			break;
 		}
-		cur = cur->express;
+		fast = fast->express;
 	}
-	found = part_two(prev, cur, value);
-	return (found);
 
+	if (!fast->express)
+	{
+		for (list = fast; list->next; list = list->next)
+			;
+		printf("Value found between indexes [%lu] and [%lu]\n",
+			fast->index, list->index);
+	}
+	found = check_slow(fast, list, value);
+
+	return (found);
 }
 
 
