@@ -4,9 +4,7 @@
  * First argument is Movie ID
  */
 
-
 const request = require('request');
-
 function getCharacterName (characters, i) {
   if (i === characters.length) return;
   request(characters[i], (err, resp, body) => {
@@ -17,7 +15,6 @@ function getCharacterName (characters, i) {
     }
   });
 }
-
 request(`https://swapi-api.hbtn.io/api/films/${process.argv[2]}/`,
   function (err, resp, body) {
     if (err) console.log(err);
