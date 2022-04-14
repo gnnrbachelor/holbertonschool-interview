@@ -20,6 +20,6 @@ def rain(walls):
         for j in range(i + 1, len(walls)):
             max_r = max(max_r, walls[j])
 
-        water =  water + (min(max_l, max_r) - walls[i])
+        water = water + (min(max_l, max_r) - walls[i])
 
-    return water;
+    return water
