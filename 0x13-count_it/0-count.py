@@ -4,6 +4,7 @@ recursive reddit
 """
 import requests
 
+
 def count_words(subreddit, word_list, after='', word_count={}):
     """
     recursive reddit exercise
@@ -12,7 +13,8 @@ def count_words(subreddit, word_list, after='', word_count={}):
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
     headers = {'User-Agent': 'gnnr___'}
     params = {'limit': '100', 'after': after}
-    res = requests.get(url, headers=headers, params=params, allow_redirects=False)
+    res = requests.get(url, headers=headers,
+                       params=params, allow_redirects=False)
     if res.status_code == 200:
         data = res.json().get('data')
         after = data.get('after')
@@ -33,7 +35,9 @@ def count_words(subreddit, word_list, after='', word_count={}):
         else:
             if not len(word_count) > 0:
                 return
-            sorted_data = sorted(word_count.items(), key=lambda key_value: (-key_value[1], key_value[0]))
+            sorted_data = sorted(word_count.items(),
+                                 key=lambda key_value: (-key_value[1],
+                                                        key_value[0]))
             for k, v in sorted_data:
                 print('{}: {}'.format(k, v))
     else:
