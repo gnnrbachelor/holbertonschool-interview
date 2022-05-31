@@ -1,7 +1,7 @@
 #include "lists.h"
 
 /**
- * find_list - Finds loop in linked list
+ * find_listint_loop - Finds loop in linked list
  * @head: Head
  * Return: Address of loop beginning or NULL
  *
