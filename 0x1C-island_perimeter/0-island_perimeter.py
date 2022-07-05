@@ -1,13 +1,16 @@
 #!/usr/bin/python3
 
-import numpy as np
-
 """
 Island Perimeter
 
 """
 
+
 def count_neighbors(grid, i, j):
+    """
+    count neighbors
+    """
+
     row = len(grid)
     column = len(grid[0])
     count = 0
@@ -23,18 +26,15 @@ def count_neighbors(grid, i, j):
     return (count)
 
 
-
-
 def island_perimeter(grid):
     """
     Calculates perimeter
     """
+
     perimeter = 0
 
     for i in range(len(grid)):
         for j in range(len(grid[i])):
             if grid[i][j] != 0:
                 perimeter += (4 - count_neighbors(grid, i, j))
-
     return (perimeter)
-
